@@ -24,4 +24,4 @@ ENV IS_UNSTABLE_CHROME_INSTALLED true
 CMD printenv
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
-CMD [ "/usr/local/bin/node", "index.js" ]
+CMD [ "node", "index.js" ]
