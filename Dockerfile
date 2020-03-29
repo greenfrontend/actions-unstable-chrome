@@ -22,7 +22,7 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 ENV IS_UNSTABLE_CHROME_INSTALLED true
 
 CMD printenv
-CMD ls
+CMD [ "cat", "index.js" ]
 #
 ## Code file to execute when the docker container starts up (`entrypoint.sh`)
 #CMD [ "node", "index.js" ]
