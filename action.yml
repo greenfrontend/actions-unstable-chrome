@@ -1,5 +1,12 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'Run with Chrome Unstable'
+description: 'Execute command after installing Google Chrome Unstable'
+inputs:
+  command:
+    description: 'what command to execute?'
+    required: true
+    default: 'node index.js'
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  args:
+    - ${{ inputs.command }}

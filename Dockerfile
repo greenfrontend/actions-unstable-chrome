@@ -1,15 +1,6 @@
-# Container image that runs your code
 FROM node:9.11
 
-## Copies your code file from your action repository to the filesystem path `/` of the container
-#COPY entrypoint.sh /entrypoint.sh
-#
-## download wget
-#RUN  apt-get update \
-#  && apt-get install -y wget \
-#  && rm -rf /var/lib/apt/lists/*
-
-# download chrome for slack preview generation
+# download chrome
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
     && sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
     && apt-get update \
@@ -19,10 +10,6 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key
 
 # prevent puppeteer from extra chrome download
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
-ENV IS_UNSTABLE_CHROME_INSTALLED true
 
-CMD printenv
-CMD [ "cat", "index.js" ]
-#
-## Code file to execute when the docker container starts up (`entrypoint.sh`)
-#CMD [ "node", "index.js" ]
+# code file to execute when the docker container starts up (`entrypoint.sh`)
+ENTRYPOINT ["/entrypoint.sh"]
