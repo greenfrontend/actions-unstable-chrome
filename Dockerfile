@@ -1,5 +1,5 @@
 # Container image that runs your code
-FROM ubuntu:16.04
+FROM node:9.11
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.sh /entrypoint.sh
@@ -19,6 +19,9 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key
 
 # prevent puppeteer from extra chrome download
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
+ENV IS_UNSTABLE_CHROME_INSTALLED true
+
+CMD printenv
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
-ENTRYPOINT ["/entrypoint.sh"]
+CMD [ "/usr/local/bin/node", "server" ]
