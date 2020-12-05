@@ -6,7 +6,7 @@ This action install "google-chrome-unstable" and then runs command that you spec
 
 ```yaml
 - name: Run Screenshot Test
-  uses: greenfrontend/actions-unstable-chrome@v11
+  uses: greenfrontend/actions-unstable-chrome@v12
   with:
     command: 'node index.js'
 ```
